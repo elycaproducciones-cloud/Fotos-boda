@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Álbum de Boda · Elizabeth & Juan Carlos</title>
+<title>Álbum de Recuerdos · Elizabeth & Juan Carlos</title>
 
 <!-- Google Fonts + Font Awesome -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -130,6 +130,10 @@ body {
   margin-bottom: 0.8rem;
 }
 
+.upload-card h2 i {
+  margin-right: 10px;
+}
+
 .upload-area {
   border: 2px dashed var(--gold);
   border-radius: 32px;
@@ -205,6 +209,10 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.message-input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
 .btn-submit {
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   border: none;
@@ -238,6 +246,10 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.gallery-section h2 i {
+  margin-right: 10px;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -251,7 +263,6 @@ body {
   border: 1px solid rgba(228, 179, 99, 0.3);
   transition: all 0.3s;
   cursor: pointer;
-  position: relative;
 }
 
 .gallery-item:hover {
@@ -271,6 +282,10 @@ body {
   text-align: center;
   color: var(--gold-light);
   background: rgba(10, 26, 47, 0.85);
+}
+
+.gallery-item .caption i {
+  margin-right: 5px;
 }
 
 /* Botón de admin flotante */
@@ -327,6 +342,12 @@ body {
 .admin-panel h3 {
   color: var(--gold);
   margin-bottom: 1rem;
+}
+
+.admin-panel h4 {
+  color: var(--gold-light);
+  margin: 1rem 0 0.5rem;
+  text-align: left;
 }
 
 .admin-panel input {
@@ -449,24 +470,12 @@ body {
   color: var(--blue-deep);
 }
 
-.loading-spinner {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--gold);
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
 @media (max-width: 650px) {
   .container { padding: 1rem; }
   .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
   .admin-btn { padding: 8px 15px; font-size: 0.8rem; }
+  .upload-card h2 { font-size: 1.4rem; }
+  .header h1 { font-size: 1.3rem; }
 }
 </style>
 </head>
@@ -484,6 +493,7 @@ body {
 </div>
 
 <div class="container">
+  <!-- Tarjeta de subida -->
   <div class="upload-card">
     <h2><i class="fas fa-cloud-upload-alt"></i> Sube tu recuerdo</h2>
     <div class="upload-area" id="uploadArea">
@@ -497,6 +507,7 @@ body {
     <button class="btn-submit" id="submitBtn"><i class="fas fa-heart"></i> Compartir recuerdo</button>
   </div>
 
+  <!-- Galería pública -->
   <div class="gallery-section">
     <h2><i class="fas fa-images"></i> Álbum de recuerdos</h2>
     <div id="galleryGrid" class="gallery-grid">
@@ -508,8 +519,10 @@ body {
   </div>
 </div>
 
+<!-- Botón de administración -->
 <button class="admin-btn" id="adminBtn"><i class="fas fa-lock"></i> Administrar</button>
 
+<!-- Modal de administración -->
 <div id="adminModal" class="admin-modal">
   <div class="admin-panel">
     <h3><i class="fas fa-crown"></i> Panel de Administración</h3>
@@ -530,6 +543,7 @@ body {
   </div>
 </div>
 
+<!-- Modal para ver contenido -->
 <div id="viewModal" class="modal-view">
   <div id="viewContent"></div>
 </div>
@@ -537,14 +551,12 @@ body {
 <script>
 // ==================== CONFIGURACIÓN ====================
 const ADMIN_PASSWORD = "boda2026";  // 🔐 Cambia esta contraseña
-// API key pública de ImgBB (funciona sin registro)
-const IMGBB_API_KEY = "6d207e02198a847aa98d0a2a901485a5";
 
 // ==================== ESTRUCTURA DE DATOS ====================
 let pendingMemories = [];
 let approvedMemories = [];
 
-// Verificar sesión de administrador
+// Verificar sesión guardada
 function checkAdminSession() {
   const savedSession = localStorage.getItem('admin_session');
   if (savedSession === 'true') {
@@ -564,39 +576,16 @@ function saveAdminSession(remember) {
 
 // Cargar datos desde localStorage
 function loadData() {
-  const pending = localStorage.getItem('wedding_pending_cloud');
-  const approved = localStorage.getItem('wedding_approved_cloud');
+  const pending = localStorage.getItem('wedding_pending_local');
+  const approved = localStorage.getItem('wedding_approved_local');
   if (pending) pendingMemories = JSON.parse(pending);
   if (approved) approvedMemories = JSON.parse(approved);
   renderGallery();
 }
 
 function saveData() {
-  localStorage.setItem('wedding_pending_cloud', JSON.stringify(pendingMemories));
-  localStorage.setItem('wedding_approved_cloud', JSON.stringify(approvedMemories));
-}
-
-// ==================== SUBIR A LA NUBE (ImgBB) ====================
-async function uploadToCloud(file) {
-  return new Promise((resolve, reject) => {
-    const formData = new FormData();
-    formData.append('image', file);
-    formData.append('key', IMGBB_API_KEY);
-    
-    fetch('https://api.imgbb.com/1/upload', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        resolve({ url: data.data.url, deleteUrl: data.data.delete_url });
-      } else {
-        reject(new Error('Error al subir a la nube: ' + JSON.stringify(data)));
-      }
-    })
-    .catch(reject);
-  });
+  localStorage.setItem('wedding_pending_local', JSON.stringify(pendingMemories));
+  localStorage.setItem('wedding_approved_local', JSON.stringify(approvedMemories));
 }
 
 // ==================== MANEJO DE ARCHIVOS ====================
@@ -671,7 +660,7 @@ function showToast(msg) {
   setTimeout(() => toast.remove(), 3000);
 }
 
-// Enviar recuerdo con subida a la nube
+// Enviar recuerdo
 submitBtn.addEventListener('click', async () => {
   if (selectedFiles.length === 0) {
     alert("📸 Selecciona al menos una foto o video");
@@ -684,42 +673,41 @@ submitBtn.addEventListener('click', async () => {
   }
   
   submitBtn.disabled = true;
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Subiendo a la nube...';
+  submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Guardando...';
   
-  try {
-    const uploadedFiles = [];
-    for (const file of selectedFiles) {
-      const result = await uploadToCloud(file);
-      uploadedFiles.push({
-        type: file.type.startsWith('image/') ? 'image' : 'video',
-        url: result.url,
-        deleteUrl: result.deleteUrl,
-        name: file.name
-      });
-    }
-    
-    const newMemory = {
-      id: Date.now(),
-      files: uploadedFiles,
-      message: message,
-      date: new Date().toISOString()
-    };
-    pendingMemories.unshift(newMemory);
-    saveData();
-    
-    // Limpiar
-    selectedFiles = [];
-    previewElements.forEach(el => el.remove());
-    previewElements = [];
-    messageInput.value = '';
-    showToast('✨ ¡Gracias! Tu recuerdo ha sido enviado a la nube y será revisado');
-  } catch (error) {
-    console.error(error);
-    alert('❌ Error al subir a la nube. Intenta de nuevo.');
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = '<i class="fas fa-heart"></i> Compartir recuerdo';
+  // Convertir archivos a Base64
+  const filesData = [];
+  for (const file of selectedFiles) {
+    const reader = new FileReader();
+    const data = await new Promise((resolve) => {
+      reader.onload = (e) => resolve(e.target.result);
+      reader.readAsDataURL(file);
+    });
+    filesData.push({
+      type: file.type.startsWith('image/') ? 'image' : 'video',
+      data: data,
+      name: file.name
+    });
   }
+  
+  const newMemory = {
+    id: Date.now(),
+    files: filesData,
+    message: message,
+    date: new Date().toISOString()
+  };
+  pendingMemories.unshift(newMemory);
+  saveData();
+  
+  // Limpiar
+  selectedFiles = [];
+  previewElements.forEach(el => el.remove());
+  previewElements = [];
+  messageInput.value = '';
+  showToast('✨ ¡Gracias! Tu recuerdo será revisado por los novios');
+  
+  submitBtn.disabled = false;
+  submitBtn.innerHTML = '<i class="fas fa-heart"></i> Compartir recuerdo';
 });
 
 // ==================== GALERÍA PÚBLICA ====================
@@ -727,7 +715,7 @@ function renderGallery() {
   const galleryGrid = document.getElementById('galleryGrid');
   if (approvedMemories.length === 0) {
     galleryGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem;">
-      <i class="fas fa-camera" style="font-size:3rem; opacity:0.5;"></i>
+      <i class="fas fa-camera" style="font-size:3rem; opacity:0.5; margin-bottom:1rem; display:block;"></i>
       <p>✨ Pronto aparecerán los recuerdos de nuestros invitados ✨</p>
       <p style="font-size:0.8rem; margin-top:10px;">¡Sé el primero en compartir tu foto!</p>
     </div>`;
@@ -738,8 +726,8 @@ function renderGallery() {
   approvedMemories.forEach(mem => {
     const firstFile = mem.files[0];
     html += `
-      <div class="gallery-item" data-type="${firstFile.type}" data-url="${firstFile.url}">
-        ${firstFile.type === 'image' ? `<img src="${firstFile.url}" loading="lazy">` : `<video src="${firstFile.url}" preload="metadata"></video>`}
+      <div class="gallery-item" data-type="${firstFile.type}" data-url="${firstFile.data}">
+        ${firstFile.type === 'image' ? `<img src="${firstFile.data}" loading="lazy">` : `<video src="${firstFile.data}" preload="metadata"></video>`}
         <div class="caption"><i class="fas fa-heart"></i> ${escapeHtml(mem.message.substring(0, 80))}</div>
       </div>
     `;
@@ -769,7 +757,8 @@ const closeAdminBtn = document.getElementById('closeAdminBtn');
 const rememberMe = document.getElementById('rememberMe');
 const loginSection = document.getElementById('loginSection');
 
-if (checkAdminSession()) {}
+// Verificar sesión al cargar
+checkAdminSession();
 
 adminBtn.addEventListener('click', () => {
   adminModal.classList.add('active');
@@ -801,6 +790,7 @@ closeAdminBtn.addEventListener('click', () => {
 });
 
 function renderAdminPanels() {
+  // Lista de pendientes
   const pendingListDiv = document.getElementById('pendingList');
   if (pendingMemories.length === 0) {
     pendingListDiv.innerHTML = '<p style="color:#aaa; text-align:center;">✨ No hay recuerdos pendientes</p>';
@@ -820,6 +810,7 @@ function renderAdminPanels() {
     pendingListDiv.innerHTML = html;
   }
   
+  // Lista de aprobados
   const approvedListDiv = document.getElementById('approvedList');
   if (approvedMemories.length === 0) {
     approvedListDiv.innerHTML = '<p style="color:#aaa; text-align:center;">📷 No hay recuerdos aprobados aún</p>';
@@ -899,10 +890,9 @@ viewModal.addEventListener('click', () => {
 // Inicializar
 loadData();
 
-// Mensaje en consola para el administrador
+// Mensaje en consola
 console.log('%c✨ ÁLBUM DE BODA - ELIZABETH & JUAN CARLOS ✨', 'color: #e4b363; font-size: 14px; font-weight: bold;');
 console.log('%c🔐 Contraseña de administrador: boda2026', 'color: #f5d589;');
-console.log('%c📸 Las fotos se suben automáticamente a la nube (ImgBB)', 'color: #aaa;');
 console.log('%c💡 Para cambiar la contraseña, edita la línea 369 del código', 'color: #ffaa66;');
 </script>
 </body>
