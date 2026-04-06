@@ -34,7 +34,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Fondo con imágenes y overlay igual que la invitación */
+/* Fondo con animación */
 .hero-bg {
   position: fixed;
   top: 0;
@@ -131,7 +131,7 @@ body {
   padding: 2rem;
 }
 
-/* Tarjeta de subida - estilo vidrio igual a la invitación */
+/* Tarjeta de subida */
 .upload-card {
   background: rgba(5, 13, 24, 0.7);
   backdrop-filter: blur(12px);
@@ -197,7 +197,6 @@ body {
   display: none;
 }
 
-/* Previsualización de archivos */
 .preview-container {
   display: flex;
   flex-wrap: wrap;
@@ -298,7 +297,7 @@ body {
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
 }
 
-/* Galería - estilo elegante */
+/* Galería */
 .gallery-section {
   background: rgba(10, 26, 47, 0.55);
   backdrop-filter: blur(10px);
@@ -370,7 +369,7 @@ body {
   color: var(--gold);
 }
 
-/* Modal elegante */
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -458,7 +457,6 @@ body {
   }
 }
 
-/* Botón volver */
 .back-btn {
   display: inline-flex;
   align-items: center;
@@ -491,7 +489,6 @@ body {
   transform: translateX(-3px);
 }
 
-/* Corazón flotante decorativo */
 .floating-heart {
   position: fixed;
   bottom: 25px;
@@ -518,7 +515,7 @@ body {
 </head>
 <body>
 
-<!-- Fondo con animación al estilo de la invitación -->
+<!-- Fondo con animación -->
 <div class="hero-bg">
   <div class="bg-layer bg-layer-1"></div>
   <div class="bg-layer bg-layer-2"></div>
@@ -529,7 +526,7 @@ body {
   <i class="fas fa-heart"></i> <i class="fas fa-heart"></i>
 </div>
 
-<!-- Header elegante -->
+<!-- Header -->
 <div class="header">
   <div class="heart-divider">
     <i class="fas fa-heart"></i> <i class="fas fa-heart"></i> <i class="fas fa-heart"></i>
@@ -563,7 +560,7 @@ body {
     </button>
   </div>
 
-  <!-- Galería de recuerdos -->
+  <!-- Galería -->
   <div class="gallery-section">
     <h2><i class="fas fa-images"></i> Álbum de recuerdos</h2>
     <div id="galleryGrid" class="gallery-grid">
@@ -583,8 +580,8 @@ body {
 
 <script>
 // ==================== CONFIGURACIÓN ====================
-// 📁 URL de Google Forms para recibir las fotos/videos
-const GOOGLE_FORM_URL = "https://forms.gle/TU_FORMULARIO_AQUI";
+// TU ENLACE DE GOOGLE FORMS - YA INTEGRADO
+const GOOGLE_FORM_URL = "https://forms.gle/8ZP5cRkczJF9guP4A";
 
 // ==================== MANEJO DE ARCHIVOS ====================
 let selectedFiles = [];
@@ -805,6 +802,7 @@ window.removeMemory = function(index) {
 loadMemories();
 
 console.log('%c✨ ELIZABETH & JUAN CARLOS - ÁLBUM DE RECUERDOS ✨', 'color: #e4b363; font-size: 14px; font-weight: bold;');
+console.log('%c📸 Tu enlace de Google Forms ya está configurado', 'color: #f5d589;');
 console.log('%c📸 Para AGREGAR una foto: addMemory("image", "URL", "Mensaje")', 'color: #f5d589;');
 console.log('%c🎬 Para AGREGAR un video: addMemory("video", "URL", "Mensaje")', 'color: #f5d589;');
 console.log('%c🗑️ Para ELIMINAR: removeMemory(índice)', 'color: #ffaa66;');
