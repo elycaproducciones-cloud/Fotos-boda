@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Recuerdos · Boda Elizabeth & Juan Carlos</title>
+<title>Álbum de Boda · Elizabeth & Juan Carlos</title>
 
 <!-- Google Fonts + Font Awesome -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -22,7 +22,6 @@
   --gold-dark: #c49a3a;
   --blue-deep: #0a1a2f;
   --blue-mid: #0f2a44;
-  --blue-soft: #1a3a5c;
   --dark-bg: #050d18;
 }
 
@@ -34,7 +33,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Fondo con animación */
+/* Fondo animado */
 .hero-bg {
   position: fixed;
   top: 0;
@@ -54,7 +53,6 @@ body {
 
 .bg-layer-1 {
   background-image: url('https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&w=1600');
-  background-position: center 30%;
   animation: slowZoom 30s ease-in-out infinite alternate;
 }
 
@@ -82,17 +80,16 @@ body {
   z-index: -1;
 }
 
-/* Header elegante */
+/* Header */
 .header {
   background: rgba(10, 26, 47, 0.85);
   backdrop-filter: blur(15px);
-  padding: 1.8rem 2rem;
+  padding: 1.5rem 2rem;
   text-align: center;
   border-bottom: 2px solid var(--gold);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
 }
 
 .header h1 {
@@ -100,31 +97,15 @@ body {
   font-size: 1.8rem;
   color: var(--gold);
   letter-spacing: 4px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-
-.header h1 i {
-  margin-right: 12px;
-  color: var(--gold);
 }
 
 .header p {
   font-size: 0.85rem;
   opacity: 0.8;
-  margin-top: 8px;
-  letter-spacing: 1px;
+  margin-top: 5px;
 }
 
-.heart-divider {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin: 10px 0 5px;
-  color: var(--gold);
-  font-size: 0.7rem;
-}
-
-/* Contenedor principal */
+/* Contenedor */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -137,60 +118,37 @@ body {
   backdrop-filter: blur(12px);
   border-radius: 48px;
   border: 1px solid rgba(228, 179, 99, 0.4);
-  padding: 2.5rem;
-  margin-bottom: 2.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
-  transition: all 0.4s ease;
-  box-shadow: 0 30px 50px -20px rgba(0,0,0,0.5), 0 0 0 1px rgba(228,179,99,0.1) inset;
-}
-
-.upload-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 40px 60px -25px rgba(0,0,0,0.6), 0 0 0 1px rgba(228,179,99,0.2) inset;
 }
 
 .upload-card h2 {
   font-family: 'Cinzel', serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--gold);
   margin-bottom: 0.8rem;
-  letter-spacing: 3px;
-}
-
-.upload-card h2 i {
-  margin-right: 12px;
-}
-
-.upload-card p {
-  font-size: 0.95rem;
-  opacity: 0.85;
 }
 
 .upload-area {
   border: 2px dashed var(--gold);
   border-radius: 32px;
-  padding: 2.8rem;
-  margin: 1.8rem 0;
+  padding: 2rem;
+  margin: 1.5rem 0;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
   background: rgba(0, 0, 0, 0.3);
 }
 
 .upload-area:hover {
   background: rgba(228, 179, 99, 0.08);
   border-color: var(--gold-light);
-  transform: scale(1.01);
 }
 
 .upload-area i {
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--gold);
   margin-bottom: 1rem;
-  text-shadow: 0 0 10px rgba(228,179,99,0.3);
-}
-
-.upload-area p {
-  font-size: 1rem;
 }
 
 #fileInput {
@@ -200,27 +158,18 @@ body {
 .preview-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 25px;
+  gap: 15px;
+  margin: 15px 0;
   justify-content: center;
 }
 
 .preview-item {
   position: relative;
-  width: 120px;
-  height: 120px;
-  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
   overflow: hidden;
   border: 2px solid var(--gold);
-  background: #000;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.preview-item:hover {
-  transform: scale(1.05);
-  border-color: var(--gold-light);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
 .preview-item img, .preview-item video {
@@ -231,70 +180,46 @@ body {
 
 .preview-item .remove-btn {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 4px;
+  right: 4px;
   background: rgba(0,0,0,0.7);
   border-radius: 50%;
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: #ff6b6b;
-  font-size: 12px;
-  transition: 0.2s;
-  backdrop-filter: blur(4px);
-}
-
-.preview-item .remove-btn:hover {
-  background: #ff6b6b;
-  color: white;
+  font-size: 11px;
 }
 
 .message-input {
   width: 100%;
-  padding: 14px 22px;
+  padding: 12px 20px;
   border-radius: 60px;
   border: 1.5px solid var(--gold);
   background: rgba(255,255,255,0.06);
   color: white;
-  margin: 18px 0;
+  margin: 15px 0;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  transition: all 0.3s;
-}
-
-.message-input:focus {
-  outline: none;
-  border-color: var(--gold-light);
-  background: rgba(255,255,255,0.1);
-  box-shadow: 0 0 15px rgba(228,179,99,0.2);
-}
-
-.message-input::placeholder {
-  color: rgba(255,255,255,0.4);
 }
 
 .btn-submit {
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   border: none;
-  padding: 14px 48px;
+  padding: 12px 40px;
   border-radius: 60px;
   color: var(--blue-deep);
-  font-weight: 600;
+  font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s;
-  margin-top: 10px;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 1px;
+  transition: 0.3s;
 }
 
 .btn-submit:hover {
   transform: scale(1.02);
-  box-shadow: 0 10px 30px -8px rgba(228,179,99,0.5);
-  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  box-shadow: 0 10px 25px -8px rgba(228,179,99,0.4);
 }
 
 /* Galería */
@@ -302,10 +227,7 @@ body {
   background: rgba(10, 26, 47, 0.55);
   backdrop-filter: blur(10px);
   border-radius: 48px;
-  padding: 2.5rem;
-  margin-top: 1rem;
-  border: 1px solid rgba(228, 179, 99, 0.25);
-  transition: all 0.3s;
+  padding: 2rem;
 }
 
 .gallery-section h2 {
@@ -313,64 +235,142 @@ body {
   font-size: 1.8rem;
   color: var(--gold);
   text-align: center;
-  margin-bottom: 1.8rem;
-  letter-spacing: 3px;
-}
-
-.gallery-section h2 i {
-  margin-right: 12px;
+  margin-bottom: 1.5rem;
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .gallery-item {
   background: rgba(0, 0, 0, 0.45);
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(228, 179, 99, 0.3);
-  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  transition: all 0.3s;
   cursor: pointer;
-  backdrop-filter: blur(4px);
+  position: relative;
 }
 
 .gallery-item:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   border-color: var(--gold);
-  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
 }
 
 .gallery-item img, .gallery-item video {
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
-  transition: transform 0.5s;
-}
-
-.gallery-item:hover img, .gallery-item:hover video {
-  transform: scale(1.03);
 }
 
 .gallery-item .caption {
-  padding: 14px;
-  font-size: 0.85rem;
+  padding: 10px;
+  font-size: 0.8rem;
   text-align: center;
   color: var(--gold-light);
   background: rgba(10, 26, 47, 0.85);
-  font-weight: 400;
-  letter-spacing: 0.5px;
 }
 
-.gallery-item .caption i {
-  margin-right: 6px;
+/* Botón de admin flotante */
+.admin-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--blue-deep);
+  border: 1px solid var(--gold);
+  border-radius: 60px;
+  padding: 12px 20px;
+  cursor: pointer;
+  z-index: 200;
+  transition: 0.3s;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
   color: var(--gold);
 }
 
-/* Modal */
-.modal {
+.admin-btn:hover {
+  background: var(--gold);
+  color: var(--blue-deep);
+}
+
+/* Modal admin */
+.admin-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 13, 24, 0.98);
+  backdrop-filter: blur(15px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-modal.active {
+  display: flex;
+}
+
+.admin-panel {
+  background: rgba(10, 26, 47, 0.95);
+  border-radius: 32px;
+  border: 2px solid var(--gold);
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+
+.admin-panel h3 {
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.admin-panel input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 60px;
+  border: 1px solid var(--gold);
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.admin-panel button {
+  background: var(--gold);
+  border: none;
+  padding: 10px 25px;
+  border-radius: 60px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.admin-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 15px 0;
+}
+
+.admin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid rgba(228,179,99,0.3);
+}
+
+.admin-item button {
+  background: #ff6b6b;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+}
+
+/* Modal de visualización */
+.modal-view {
   display: none;
   position: fixed;
   top: 0;
@@ -385,49 +385,15 @@ body {
   cursor: pointer;
 }
 
-.modal.active {
+.modal-view.active {
   display: flex;
-  animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.modal-content {
+.modal-view img, .modal-view video {
   max-width: 90%;
-  max-height: 90%;
-}
-
-.modal-content img, .modal-content video {
-  max-width: 100%;
   max-height: 85vh;
-  border-radius: 24px;
+  border-radius: 20px;
   border: 3px solid var(--gold);
-  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-}
-
-.modal-close {
-  position: absolute;
-  top: 25px;
-  right: 35px;
-  font-size: 2.5rem;
-  color: var(--gold);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.modal-close:hover {
-  transform: scale(1.1);
-  color: var(--gold-light);
-}
-
-.loading {
-  text-align: center;
-  padding: 3rem;
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
 }
 
 .toast {
@@ -437,154 +403,130 @@ body {
   transform: translateX(-50%);
   background: var(--gold);
   color: var(--blue-deep);
-  padding: 12px 28px;
+  padding: 10px 25px;
   border-radius: 60px;
   font-weight: bold;
-  z-index: 1001;
-  animation: slideUp 0.3s ease;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  font-family: 'Montserrat', sans-serif;
+  z-index: 1002;
+  animation: fadeUp 0.3s;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 .back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: transparent;
-  border: 1.5px solid var(--gold);
+  display: inline-block;
+  margin-top: 1.5rem;
   color: var(--gold);
-  padding: 12px 28px;
-  border-radius: 60px;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s;
-  margin-top: 1.8rem;
-  letter-spacing: 1px;
+  border: 1px solid var(--gold);
+  padding: 8px 20px;
+  border-radius: 60px;
+  transition: 0.3s;
 }
 
 .back-btn:hover {
   background: var(--gold);
   color: var(--blue-deep);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(228,179,99,0.3);
-}
-
-.back-btn i {
-  transition: 0.2s;
-}
-
-.back-btn:hover i {
-  transform: translateX(-3px);
-}
-
-.floating-heart {
-  position: fixed;
-  bottom: 25px;
-  left: 25px;
-  opacity: 0.35;
-  font-size: 1.2rem;
-  color: var(--gold);
-  pointer-events: none;
-  z-index: 99;
 }
 
 @media (max-width: 650px) {
   .container { padding: 1rem; }
-  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-  .upload-card { padding: 1.5rem; }
-  .upload-card h2 { font-size: 1.5rem; }
-  .upload-area { padding: 1.8rem; }
-  .header h1 { font-size: 1.3rem; letter-spacing: 2px; }
-  .gallery-section { padding: 1.5rem; }
-  .gallery-section h2 { font-size: 1.4rem; }
-  .floating-heart { display: none; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .admin-btn { padding: 8px 15px; font-size: 0.8rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- Fondo con animación -->
 <div class="hero-bg">
   <div class="bg-layer bg-layer-1"></div>
   <div class="bg-layer bg-layer-2"></div>
 </div>
 <div class="overlay"></div>
 
-<div class="floating-heart">
-  <i class="fas fa-heart"></i> <i class="fas fa-heart"></i>
-</div>
-
-<!-- Header -->
 <div class="header">
-  <div class="heart-divider">
-    <i class="fas fa-heart"></i> <i class="fas fa-heart"></i> <i class="fas fa-heart"></i>
-  </div>
   <h1><i class="fas fa-camera-retro"></i> Elizabeth & Juan Carlos</h1>
   <p>Comparte tus fotos y videos del día más especial</p>
-  <div class="heart-divider">
-    <i class="fas fa-heart"></i> <i class="fas fa-heart"></i> <i class="fas fa-heart"></i>
-  </div>
 </div>
 
 <div class="container">
-  <!-- Tarjeta de subida -->
+  <!-- Sección para subir -->
   <div class="upload-card">
     <h2><i class="fas fa-cloud-upload-alt"></i> Sube tu recuerdo</h2>
-    <p>Tus fotos, videos y mensajes serán parte de nuestra historia eterna</p>
-    
     <div class="upload-area" id="uploadArea">
       <i class="fas fa-camera"></i>
       <p>Haz clic o arrastra tus archivos aquí</p>
-      <p style="font-size: 0.75rem; margin-top: 8px; opacity: 0.7;">Formatos: JPG, PNG, GIF, MP4, MOV · Máx 50MB</p>
+      <p style="font-size: 0.75rem;">Fotos y videos · Máx 50MB</p>
     </div>
-    <input type="file" id="fileInput" multiple accept="image/jpeg,image/png,image/jpg,image/gif,video/mp4,video/quicktime">
-    
+    <input type="file" id="fileInput" multiple accept="image/*,video/mp4,video/quicktime">
     <div id="previewList" class="preview-container"></div>
-    
-    <input type="text" id="messageInput" class="message-input" placeholder="✍️ Escribe tu nombre y un mensaje para los novios... (ej: 'Felicidades de Ana y Carlos 💙')">
-    
-    <button class="btn-submit" id="submitBtn">
-      <i class="fas fa-heart"></i> Enviar mis recuerdos
-    </button>
+    <input type="text" id="messageInput" class="message-input" placeholder="✍️ Tu nombre y mensaje para los novios...">
+    <button class="btn-submit" id="submitBtn"><i class="fas fa-heart"></i> Compartir recuerdo</button>
   </div>
 
-  <!-- Galería -->
+  <!-- Galería pública -->
   <div class="gallery-section">
     <h2><i class="fas fa-images"></i> Álbum de recuerdos</h2>
     <div id="galleryGrid" class="gallery-grid">
-      <div class="loading"><i class="fas fa-spinner fa-pulse"></i> Cargando recuerdos...</div>
+      <div style="text-align:center; padding:2rem;"><i class="fas fa-spinner fa-pulse"></i> Cargando...</div>
     </div>
-    <div style="text-align: center; margin-top: 2rem;">
+    <div style="text-align: center;">
       <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver a la invitación</a>
     </div>
   </div>
 </div>
 
-<!-- Modal -->
-<div id="mediaModal" class="modal">
-  <span class="modal-close">&times;</span>
-  <div class="modal-content" id="modalContent"></div>
+<!-- Botón de administración -->
+<button class="admin-btn" id="adminBtn"><i class="fas fa-lock"></i> Administrar</button>
+
+<!-- Modal de administración -->
+<div id="adminModal" class="admin-modal">
+  <div class="admin-panel">
+    <h3><i class="fas fa-crown"></i> Panel de Administración</h3>
+    <input type="password" id="adminPassword" placeholder="Contraseña">
+    <button id="loginAdminBtn">Ingresar</button>
+    <div id="adminContent" style="display:none; margin-top: 1rem;">
+      <h4>Recuerdos pendientes de aprobación</h4>
+      <div id="pendingList" class="admin-list"></div>
+      <h4>Recuerdos aprobados</h4>
+      <div id="approvedList" class="admin-list"></div>
+      <button id="closeAdminBtn" style="background:#555;">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para ver contenido -->
+<div id="viewModal" class="modal-view">
+  <div id="viewContent"></div>
 </div>
 
 <script>
-// ==================== CONFIGURACIÓN ====================
-// TU ENLACE DE GOOGLE FORMS - YA INTEGRADO
-const GOOGLE_FORM_URL = "https://forms.gle/8ZP5cRkczJF9guP4A";
+// ==================== CONTRASEÑA DE ADMINISTRACIÓN ====================
+const ADMIN_PASSWORD = "boda2026";  // 🔐 CAMBIA ESTA CONTRASEÑA
 
-// ==================== MANEJO DE ARCHIVOS ====================
+// ==================== ESTRUCTURA DE DATOS ====================
+let pendingMemories = [];   // Recuerdos pendientes de aprobación
+let approvedMemories = [];  // Recuerdos ya aprobados
+
+// Cargar datos guardados
+function loadData() {
+  const pending = localStorage.getItem('wedding_pending');
+  const approved = localStorage.getItem('wedding_approved');
+  if (pending) pendingMemories = JSON.parse(pending);
+  if (approved) approvedMemories = JSON.parse(approved);
+  renderGallery();
+}
+
+function saveData() {
+  localStorage.setItem('wedding_pending', JSON.stringify(pendingMemories));
+  localStorage.setItem('wedding_approved', JSON.stringify(approvedMemories));
+}
+
+// ==================== SUBIR ARCHIVOS ====================
 let selectedFiles = [];
+let selectedPreviews = [];
 
 const uploadArea = document.getElementById('uploadArea');
 const fileInput = document.getElementById('fileInput');
@@ -593,17 +535,9 @@ const messageInput = document.getElementById('messageInput');
 const submitBtn = document.getElementById('submitBtn');
 
 uploadArea.addEventListener('click', () => fileInput.click());
-
-uploadArea.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  uploadArea.style.background = 'rgba(228, 179, 99, 0.12)';
-});
-uploadArea.addEventListener('dragleave', () => {
-  uploadArea.style.background = 'rgba(0, 0, 0, 0.3)';
-});
+uploadArea.addEventListener('dragover', (e) => e.preventDefault());
 uploadArea.addEventListener('drop', (e) => {
   e.preventDefault();
-  uploadArea.style.background = 'rgba(0, 0, 0, 0.3)';
   addFiles(Array.from(e.dataTransfer.files));
 });
 
@@ -613,8 +547,8 @@ fileInput.addEventListener('change', (e) => {
 });
 
 function addFiles(files) {
-  const validFiles = files.filter(f => f.type.startsWith('image/') || f.type.startsWith('video/'));
-  validFiles.forEach(file => {
+  files.forEach(file => {
+    if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) return;
     if (file.size > 50 * 1024 * 1024) {
       alert(`❌ ${file.name} es muy grande (máx 50MB)`);
       return;
@@ -648,98 +582,84 @@ function createPreview(file) {
   removeBtn.onclick = () => {
     selectedFiles.splice(index, 1);
     div.remove();
-    URL.revokeObjectURL(file);
   };
   div.appendChild(removeBtn);
   previewList.appendChild(div);
 }
 
-function showToast(message) {
+function showToast(msg) {
   const toast = document.createElement('div');
   toast.className = 'toast';
-  toast.innerHTML = `<i class="fas fa-heart"></i> ${message}`;
+  toast.innerHTML = `<i class="fas fa-heart"></i> ${msg}`;
   document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3500);
+  setTimeout(() => toast.remove(), 3000);
 }
 
 submitBtn.addEventListener('click', () => {
   if (selectedFiles.length === 0) {
-    alert("📸 Por favor selecciona al menos una foto o video");
+    alert("📸 Selecciona al menos una foto o video");
     return;
   }
   const message = messageInput.value.trim();
   if (!message) {
-    alert("✍️ Por favor escribe tu nombre y un mensaje");
+    alert("✍️ Escribe tu nombre y un mensaje");
     return;
   }
   
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Preparando...';
-  
-  const instrucciones = `📸 Tienes ${selectedFiles.length} archivo(s) para compartir.
-
-Para que los novios reciban tus recuerdos:
-
-1️⃣ Abre este enlace: ${GOOGLE_FORM_URL}
-2️⃣ Escribe tu nombre y mensaje: "${message}"
-3️⃣ Sube tus ${selectedFiles.length} archivo(s)
-4️⃣ Envía el formulario
-
-✨ Los novios revisarán y agregarán tus recuerdos a la galería.`;
-  
-  alert(instrucciones);
-  window.open(GOOGLE_FORM_URL, '_blank');
-  
-  selectedFiles = [];
-  previewList.innerHTML = '';
-  messageInput.value = '';
-  submitBtn.disabled = false;
-  submitBtn.innerHTML = '<i class="fas fa-heart"></i> Enviar mis recuerdos';
-  showToast('¡Gracias! Abre el enlace para completar tu envío');
+  // Convertir archivos a Base64 para guardarlos
+  Promise.all(selectedFiles.map(file => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve({ type: file.type.startsWith('image/') ? 'image' : 'video', data: e.target.result, name: file.name });
+      reader.readAsDataURL(file);
+    });
+  })).then(results => {
+    const newMemory = {
+      id: Date.now(),
+      files: results,
+      message: message,
+      date: new Date().toISOString()
+    };
+    pendingMemories.unshift(newMemory);
+    saveData();
+    
+    // Limpiar
+    selectedFiles = [];
+    previewList.innerHTML = '';
+    messageInput.value = '';
+    showToast('✨ ¡Gracias! Tu recuerdo será revisado por los novios');
+  });
 });
 
-// ==================== GALERÍA ====================
-let approvedMemories = [];
-
-function loadMemories() {
-  const stored = localStorage.getItem('wedding_memories_elegant');
-  if (stored) {
-    approvedMemories = JSON.parse(stored);
-    renderGallery();
-  } else {
-    renderGallery();
-  }
-}
-
-function saveMemories() {
-  localStorage.setItem('wedding_memories_elegant', JSON.stringify(approvedMemories));
-}
-
+// ==================== GALERÍA PÚBLICA ====================
 function renderGallery() {
   const galleryGrid = document.getElementById('galleryGrid');
   if (approvedMemories.length === 0) {
-    galleryGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; color:var(--gold-light);">
-      <i class="fas fa-camera" style="font-size:3rem; margin-bottom:1rem; display:block; opacity:0.6;"></i>
-      <p style="font-family:'Cinzel',serif;">✨ Pronto aparecerán los recuerdos de nuestros invitados ✨</p>
-      <p style="font-size:0.8rem; margin-top:10px;">¡Sé el primero en compartir tu foto!</p>
+    galleryGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem;">
+      <i class="fas fa-camera" style="font-size:3rem; opacity:0.5;"></i>
+      <p>✨ Pronto aparecerán los recuerdos de nuestros invitados ✨</p>
     </div>`;
     return;
   }
   
   let html = '';
-  approvedMemories.forEach((mem, idx) => {
+  approvedMemories.forEach(mem => {
+    const firstFile = mem.files[0];
     html += `
-      <div class="gallery-item" data-index="${idx}" data-type="${mem.type}" data-url="${mem.url}">
-        ${mem.type === 'image' ? `<img src="${mem.url}" alt="recuerdo" loading="lazy">` : `<video src="${mem.url}" preload="metadata" loading="lazy"></video>`}
-        <div class="caption"><i class="fas fa-heart"></i> ${escapeHtml(mem.caption)}</div>
+      <div class="gallery-item" data-id="${mem.id}" data-type="${firstFile.type}" data-url="${firstFile.data}">
+        ${firstFile.type === 'image' ? `<img src="${firstFile.data}" loading="lazy">` : `<video src="${firstFile.data}" preload="metadata"></video>`}
+        <div class="caption"><i class="fas fa-heart"></i> ${escapeHtml(mem.message.substring(0, 80))}</div>
       </div>
     `;
   });
   galleryGrid.innerHTML = html;
   
+  // Eventos de clic para ver
   document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
-      openModal(item.dataset.type, item.dataset.url);
+      const type = item.dataset.type;
+      const url = item.dataset.url;
+      openViewModal(type, url);
     });
   });
 }
@@ -750,62 +670,133 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-// Modal
-const modal = document.getElementById('mediaModal');
-const modalContent = document.getElementById('modalContent');
-const modalClose = document.querySelector('.modal-close');
+// ==================== ADMINISTRACIÓN ====================
+const adminBtn = document.getElementById('adminBtn');
+const adminModal = document.getElementById('adminModal');
+const adminPassword = document.getElementById('adminPassword');
+const loginAdminBtn = document.getElementById('loginAdminBtn');
+const adminContent = document.getElementById('adminContent');
+const closeAdminBtn = document.getElementById('closeAdminBtn');
 
-function openModal(type, url) {
-  modalContent.innerHTML = '';
+adminBtn.addEventListener('click', () => {
+  adminModal.classList.add('active');
+  adminPassword.value = '';
+  adminContent.style.display = 'none';
+});
+
+loginAdminBtn.addEventListener('click', () => {
+  if (adminPassword.value === ADMIN_PASSWORD) {
+    adminContent.style.display = 'block';
+    renderAdminPanels();
+  } else {
+    alert('❌ Contraseña incorrecta');
+  }
+});
+
+closeAdminBtn.addEventListener('click', () => {
+  adminModal.classList.remove('active');
+});
+
+function renderAdminPanels() {
+  // Lista de pendientes
+  const pendingList = document.getElementById('pendingList');
+  if (pendingMemories.length === 0) {
+    pendingList.innerHTML = '<p style="color:#aaa;">No hay recuerdos pendientes</p>';
+  } else {
+    let html = '';
+    pendingMemories.forEach((mem, idx) => {
+      html += `
+        <div class="admin-item">
+          <span style="font-size:0.8rem;">${escapeHtml(mem.message.substring(0, 40))}</span>
+          <div>
+            <button onclick="approveMemory(${mem.id})" style="background:#4caf50;">✓ Aprobar</button>
+            <button onclick="rejectMemory(${mem.id})" style="background:#ff6b6b;">✗ Rechazar</button>
+          </div>
+        </div>
+      `;
+    });
+    pendingList.innerHTML = html;
+  }
+  
+  // Lista de aprobados
+  const approvedList = document.getElementById('approvedList');
+  if (approvedMemories.length === 0) {
+    approvedList.innerHTML = '<p style="color:#aaa;">No hay recuerdos aprobados</p>';
+  } else {
+    let html = '';
+    approvedMemories.forEach((mem, idx) => {
+      html += `
+        <div class="admin-item">
+          <span style="font-size:0.8rem;">${escapeHtml(mem.message.substring(0, 40))}</span>
+          <button onclick="deleteApprovedMemory(${mem.id})" style="background:#ff6b6b;">🗑 Eliminar</button>
+        </div>
+      `;
+    });
+    approvedList.innerHTML = html;
+  }
+}
+
+// Funciones globales para admin
+window.approveMemory = function(id) {
+  const index = pendingMemories.findIndex(m => m.id === id);
+  if (index !== -1) {
+    const approved = pendingMemories.splice(index, 1)[0];
+    approvedMemories.unshift(approved);
+    saveData();
+    renderGallery();
+    renderAdminPanels();
+    showToast('✅ Recuerdo aprobado y visible en la galería');
+  }
+};
+
+window.rejectMemory = function(id) {
+  const index = pendingMemories.findIndex(m => m.id === id);
+  if (index !== -1) {
+    pendingMemories.splice(index, 1);
+    saveData();
+    renderAdminPanels();
+    showToast('🗑️ Recuerdo rechazado');
+  }
+};
+
+window.deleteApprovedMemory = function(id) {
+  const index = approvedMemories.findIndex(m => m.id === id);
+  if (index !== -1) {
+    approvedMemories.splice(index, 1);
+    saveData();
+    renderGallery();
+    renderAdminPanels();
+    showToast('🗑️ Recuerdo eliminado de la galería');
+  }
+};
+
+// ==================== MODAL DE VISUALIZACIÓN ====================
+const viewModal = document.getElementById('viewModal');
+const viewContent = document.getElementById('viewContent');
+
+function openViewModal(type, url) {
+  viewContent.innerHTML = '';
   if (type === 'image') {
     const img = document.createElement('img');
     img.src = url;
-    modalContent.appendChild(img);
+    viewContent.appendChild(img);
   } else {
     const video = document.createElement('video');
     video.src = url;
     video.controls = true;
     video.autoplay = true;
-    modalContent.appendChild(video);
+    viewContent.appendChild(video);
   }
-  modal.classList.add('active');
+  viewModal.classList.add('active');
 }
 
-modalClose.addEventListener('click', () => {
-  modal.classList.remove('active');
-  modalContent.innerHTML = '';
-});
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.classList.remove('active');
-    modalContent.innerHTML = '';
-  }
+viewModal.addEventListener('click', () => {
+  viewModal.classList.remove('active');
+  viewContent.innerHTML = '';
 });
 
-// Admin functions
-window.addMemory = function(type, url, caption) {
-  approvedMemories.unshift({ type, url, caption, date: new Date().toISOString() });
-  saveMemories();
-  renderGallery();
-  showToast('✨ Recuerdo agregado a la galería');
-};
-
-window.removeMemory = function(index) {
-  if (index >= 0 && index < approvedMemories.length) {
-    approvedMemories.splice(index, 1);
-    saveMemories();
-    renderGallery();
-    showToast('🗑️ Recuerdo eliminado');
-  }
-};
-
-loadMemories();
-
-console.log('%c✨ ELIZABETH & JUAN CARLOS - ÁLBUM DE RECUERDOS ✨', 'color: #e4b363; font-size: 14px; font-weight: bold;');
-console.log('%c📸 Tu enlace de Google Forms ya está configurado', 'color: #f5d589;');
-console.log('%c📸 Para AGREGAR una foto: addMemory("image", "URL", "Mensaje")', 'color: #f5d589;');
-console.log('%c🎬 Para AGREGAR un video: addMemory("video", "URL", "Mensaje")', 'color: #f5d589;');
-console.log('%c🗑️ Para ELIMINAR: removeMemory(índice)', 'color: #ffaa66;');
+// Inicializar
+loadData();
 </script>
 </body>
 </html>
